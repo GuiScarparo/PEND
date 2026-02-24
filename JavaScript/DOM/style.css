@@ -1,0 +1,26 @@
+button{
+    background-color: #19b5ff;
+    color: white;
+    border: 7px solid #1A4052;
+    padding: 20px 55px 20px 55px;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 30px;
+    display: flex;
+    justify-self: center;
+    margin-top: 300px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #056490;
+    color: black;
+}
+img{
+    width: 450px;
+    height: 480px;
+}
+.destaque{
+    font-size: 189px;
+    color: crimson;
+    background-color: rgb(208, 255, 0);
+}
