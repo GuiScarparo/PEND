@@ -68,10 +68,43 @@ let mostrarNome = document.querySelector("#mostarNome");
 mandar.addEventListener("click", function(){
     let nome = nomeInput.value;
     if(nome === ""){
-        document.querySelector("#mostarNome").innerHTML = "<p id='erro'>O campo nome é obrigatório</p>";
+        document.querySelector("#mostarNome").innerHTML = "<p class='erro'>O campo nome é obrigatório</p>";
     }
     else{
-        document.querySelector("#mostarNome").innerHTML = "<p id='sucesso'>Nome enviado com sucesso!</p>";
+        document.querySelector("#mostarNome").innerHTML = "<p class='sucesso'>Nome enviado com sucesso!</p>";
     }
 
 }); 
+
+//exercicio validação de campos
+
+let enviarEmail = document.querySelector("#enviarEmail");
+let emailInput = document.querySelector("#email");
+let mostrarEmail = document.querySelector("#mostrarEmail");
+
+
+enviarEmail.addEventListener("click", function(){
+    let email = emailInput.value; 
+    if(email.includes("@") && email.includes(".")){
+        document.querySelector("#mostrarEmail").innerHTML = "<p class='sucesso'>Email enviado com sucesso!</p>";
+    }
+    else{
+        document.querySelector("#mostrarEmail").innerHTML = "<p class='erro'>erro.</p>";
+    }
+});
+
+
+//verifica a força da senha
+
+let senhaInput = document.querySelector("#senha");
+let mostrarSenha = document.querySelector("#mostrarSenha");
+
+senhaInput.addEventListener("input", function(){
+    let contaSenha = senhaInput.value.length;
+    if(contaSenha < 6){
+        mostrarSenha.innerHTML = "<p class='erro'>Senha fraca</p>";
+    }
+    else{
+        mostrarSenha.innerHTML = "<p class='sucesso'>Senha forte</p>";
+    }
+});
