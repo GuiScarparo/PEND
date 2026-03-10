@@ -85,11 +85,15 @@ let mostrarEmail = document.querySelector("#mostrarEmail");
 
 enviarEmail.addEventListener("click", function(){
     let email = emailInput.value; 
-    if(email.includes("@") && email.includes(".")){
+    let arroba = email.indexOf("@");
+    let ponto = email.lastIndexOf(".");
+    if(arroba > 0 && ponto > arroba + 1 && ponto < email.length - 1){
         document.querySelector("#mostrarEmail").innerHTML = "<p class='sucesso'>Email enviado com sucesso!</p>";
+        return true;
     }
     else{
         document.querySelector("#mostrarEmail").innerHTML = "<p class='erro'>erro.</p>";
+        return false;
     }
 });
 
