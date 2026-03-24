@@ -1,9 +1,16 @@
-.mensagem{
-    display: none;
+.mensagem {
+  display: none;
 }
-.erro{
-    color: red;
+.erro {
+  color: red;
 }
-.sucesso{
-    color: green;
+.sucesso {
+  color: green;
+}
+#imagem {
+  width: 450px;
+  height: 450px;
+}
+.passou {
+  color: orange;
 }
