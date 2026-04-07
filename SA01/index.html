@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TechConnect</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="shortcut icon" href="img/favicon-32x32.png" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Cabeçalho com logo e título, sendo que a logo é clicavel-->
+<header>
+    <a href="https://github.com/GuiScarparo" target="_blank"><img src="img/logo_cadastro_v1.png" alt="Logo" height="250px"></a>
+    <h2>Cadastro de Usuário</h2>
+</header>
+<!-- Formulário de cadastro, com campos para nome, email, senha, confirmação de senha, telefone e endereço, além de mensagens de erro para cada campo e um botão para cadastrar o usuário -->
+    <section class="container">
+        <label>Nome:</label> 
+            <input type="text" id="nome" class="input" placeholder="digite seu nome completo"><br><br>
+        <p id="MenNome"></p><br>
+
+        <!-- Campo de nome, com um input e um paragrafo-->
+
+        <label>Email:</label>
+            <input type="text" id="email" class="input" placeholder="xxxxx@xxxx.xxx"><br><br>
+        <p id="MenEmail"></p><br>
+
+        <!-- Campo de email, com um input e um paragrafo-->
+        
+        <label>Senha:</label>
+            <div class="mexer">
+                <input type="password" id="senha" class="input" placeholder="digite sua senha"><br><br>
+                <i class="bi bi-eye-fill icone" id="botaoSenha"></i>
+            </div>
+        <p id="MenSenha"></p><br>
+
+        <!-- Campo de senha, com um input, um paragrafo e um icone para mostrar ou esconder a senha digitada-->
+        
+        <label>Confirmar Senha:</label>
+            <div class="mexer">
+                <input type="password" id="confirmar" class="input" placeholder="confirme sua senha"><br><br>
+                <i class="bi bi-eye-fill icone" id="botaoSenha2"></i>
+            </div>
+        <p id="MenConfirma"></p><br>
+
+        <!-- Campo de confirmação de senha, com um input, um paragrafo e um icone para mostrar ou esconder a senha digitada-->
+        
+        <label>Telefone:</label>
+            <input type="text" id="telefone" class="input" placeholder="(xx) xxxxx-xxxx"><br><br>
+            <button class="d3" id="AddTel">adicionar um novo numero</button><br><br>
+            <ul id="ListaTel"></ul><br>
+        <p id="MenTelefone"></p><br>
+
+        <!-- Campo de telefone, com um input, um paragrafo, um botão para adicionar novos numeros e uma lista para exibir os numeros adicionados-->
+
+        <label>Endereço:</label>
+            <input type="text" id="CEP" class="input" placeholder="Digite seu CEP"><br><br>
+        <p id="MenCEP"></p><br>
+
+        <!-- Campo de endereço, com um input e um paragrafo-->
+        
+        <button type="button" class="d3" id="cadastrar">Cadastrar</button>
+
+        <p id="mensagem"></p>
+
+        <!-- Botão para cadastrar o usuário, e um paragrafo para exibir mensagens de sucesso ou erro no cadastro-->
+
+    </section>
+    
+    <script src="script.js"></script>
+
+</body>
+
+</html>

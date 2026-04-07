@@ -1,0 +1,125 @@
+body {
+    font-family: Arial;
+    text-align: center;
+    background-color: #FFFAF0;
+}
+label{
+    font-size: 20px;
+    color: black;
+}
+input {
+    padding: 15px;
+    width: 100%;
+    border : 1px solid #000000;
+    margin: 10px 0;
+    background: transparent;
+    transition: 0.3s;
+    box-shadow: 0px 0px 8px #708090;
+    outline: none;
+    border-radius: 10px;
+    background-color: #FFF5EE;
+}
+.Erro{
+    color: #FF3131;
+    text-shadow:
+    0 0 5px #FF3131,
+    0 0 10px #FF0000,
+    0 0 20px #FF4D4D,
+    0 0 40px #FF0000;
+}
+.Sucesso{
+    color: #1bb000;
+    text-shadow:
+    0 0 5px #39FF14,
+    0 0 10px #00FF00,
+    0 0 20px #39FF14,
+    0 0 40px #00FF00;
+}
+.Mid{
+    color: #8f8f02;
+    text-shadow:
+    0 0 5px #FFFF33,
+    0 0 10px #FFD700,
+    0 0 20px #FFFF33,
+    0 0 40px #FFF700;
+}
+.mexer{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+#botaosenha, #botaosenha2{
+    position: absolute;
+    font-size: 80px;
+    cursor: pointer;
+    left: 35px;
+    z-index: 10;
+
+}
+
+.container{
+    width: 350px;
+    margin: 100px auto;
+    background-color: #FFF0F5;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid #000000;
+    border-radius: 30px;
+    box-shadow: 0px 10px 15px #000000;
+}
+li{
+    list-style: none;
+}
+ul{
+    margin-right: 40px;
+}
+button{
+  background: #F59E0B; 
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  
+  box-shadow: 6px 6px 0px #5A3A00;
+
+  
+  transition: all 0.15s ease;
+}
+
+
+button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px #5A3A00;
+}
+
+
+button:active {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0px #5A3A00;
+}
+header{
+    background-color: #FFE4E1;
+    padding: 80px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    margin-bottom: -30px;
+    border: 1px solid #000000;
+    display: flex;
+    flex-direction: row;;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+h2{
+    margin-top: 95px;
+    margin-left: 200px;
+}
