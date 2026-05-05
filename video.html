@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Player de Vídeo - Academia</title>
+
+<!-- Fonte com cara de academia -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============================================
+     PALETA DE CORES (ajuste pra sua marca)
+     ============================================ */
+  :root {
+    --gym-bg: #0d0d10;
+    --gym-surface: #1a1a1f;
+    --gym-metal-1: #2a2a30;
+    --gym-metal-2: #3a3a42;
+    --gym-metal-light: #5a5a64;
+    --gym-accent: #ff3b00;        /* laranja energia */
+    --gym-accent-glow: #ff6a3d;
+    --gym-text: #f5f5f7;
+    --gym-text-dim: #a0a0a8;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 20% 20%, #1a1a22 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, #1a1010 0%, transparent 50%),
+      #0a0a0c;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--gym-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  /* ============================================
+     CONTAINER COM MOLDURA INDUSTRIAL
+     ============================================ */
+  .gym-video {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+
+    /* Moldura metálica com gradiente */
+    padding: 14px;
+    border-radius: 28px;
+    background:
+      linear-gradient(135deg,
+        var(--gym-metal-light) 0%,
+        var(--gym-metal-2) 25%,
+        var(--gym-metal-1) 50%,
+        var(--gym-metal-2) 75%,
+        var(--gym-metal-light) 100%);
+
+    /* Sombra externa + brilho interno pra dar profundidade */
+    box-shadow:
+      0 30px 60px -20px rgba(0, 0, 0, 0.8),
+      0 0 0 2px rgba(255, 59, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  /* Cantos com "parafusos" — toque industrial de equipamento de academia */
+  .gym-video::before,
+  .gym-video::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 35% 35%,
+        #6a6a72 0%,
+        #2a2a30 60%,
+        #1a1a1f 100%);
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.2),
+      0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  .gym-video::before {
+    top: 10px;
+    left: 10px;
+  }
+  .gym-video::after {
+    top: 10px;
+    right: 10px;
+  }
+
+  /* Parafusos de baixo (usando spans pra completar os 4 cantos) */
+  .gym-video .screw-bl,
+  .gym-video .screw-br {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 35% 35%,
+        #6a6a72 0%,
+        #2a2a30 60%,
+        #1a1a1f 100%);
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.2),
+      0 1px 2px rgba(0, 0, 0, 0.5);
+    bottom: 10px;
+  }
+  .gym-video .screw-bl { left: 10px; }
+  .gym-video .screw-br { right: 10px; }
+
+  /* Risco horizontal sutil emulando textura escovada do metal */
+  .gym-video .frame-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--gym-bg);
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 0, 0, 0.8),
+      inset 0 0 30px rgba(0, 0, 0, 0.6);
+  }
+
+  /* ============================================
+     FAIXA DE ACENTO LARANJA (estilo barra de halter)
+     ============================================ */
+  .gym-video .accent-bar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--gym-accent), var(--gym-accent-glow));
+    box-shadow: 0 0 12px var(--gym-accent-glow);
+  }
+  .gym-video .accent-top { top: -3px; }
+  .gym-video .accent-bottom { bottom: -3px; }
+
+  /* ============================================
+     O VÍDEO EM SI
+     ============================================ */
+  .gym-video video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #000;
+  }
+
+  /* ============================================
+     CONTROLES NATIVOS — esconde e usa custom
+     ============================================ */
+  .gym-video video::-webkit-media-controls {
+    display: none !important;
+  }
+
+  /* ============================================
+     CONTROLES CUSTOMIZADOS
+     ============================================ */
+  .gym-controls {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.5) 70%,
+      transparent 100%);
+    border-radius: 0 0 18px 18px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .gym-video:hover .gym-controls,
+  .gym-controls:focus-within,
+  .gym-controls.is-paused {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Botão Play/Pause */
+  .gym-btn {
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(180deg, var(--gym-accent) 0%, #d62f00 100%);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+    box-shadow:
+      0 4px 12px rgba(255, 59, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+  .gym-btn:hover {
+    transform: scale(1.05);
+    box-shadow:
+      0 6px 18px rgba(255, 59, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  .gym-btn:active {
+    transform: scale(0.96);
+  }
+  .gym-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+  }
+
+  /* Botão "play central" gigante quando pausado */
+  .gym-bigplay {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 88px;
+    height: 88px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(180deg, var(--gym-accent) 0%, #d62f00 100%);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+      0 12px 40px rgba(255, 59, 0, 0.5),
+      0 0 0 6px rgba(255, 59, 0, 0.15),
+      inset 0 2px 0 rgba(255, 255, 255, 0.25);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  .gym-bigplay:hover {
+    transform: scale(1.08);
+  }
+  .gym-bigplay svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+    margin-left: 4px;
+  }
+  .gym-bigplay.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.6);
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow:
+        0 12px 40px rgba(255, 59, 0, 0.5),
+        0 0 0 6px rgba(255, 59, 0, 0.15),
+        inset 0 2px 0 rgba(255, 255, 255, 0.25);
+    }
+    50% {
+      box-shadow:
+        0 12px 40px rgba(255, 59, 0, 0.6),
+        0 0 0 14px rgba(255, 59, 0, 0.05),
+        inset 0 2px 0 rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  /* Tempo */
+  .gym-time {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--gym-text);
+    min-width: 90px;
+    text-align: center;
+  }
+
+  /* Barra de progresso (estilo barra de peso) */
+  .gym-progress {
+    flex: 1;
+    height: 8px;
+    background: var(--gym-metal-1);
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+  }
+  .gym-progress-fill {
+    position: absolute;
+    inset: 0;
+    width: 0%;
+    background: linear-gradient(90deg, var(--gym-accent) 0%, var(--gym-accent-glow) 100%);
+    border-radius: 4px;
+    box-shadow: 0 0 8px var(--gym-accent-glow);
+    transition: width 0.1s linear;
+  }
+  .gym-progress-thumb {
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--gym-accent);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.15s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  }
+  .gym-progress:hover .gym-progress-thumb {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  /* Volume */
+  .gym-volume {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .gym-volume input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 70px;
+    height: 4px;
+    background: var(--gym-metal-1);
+    border-radius: 2px;
+    outline: none;
+  }
+  .gym-volume input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--gym-accent);
+    cursor: pointer;
+    box-shadow: 0 0 6px var(--gym-accent-glow);
+  }
+  .gym-volume input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--gym-accent);
+    cursor: pointer;
+    border: none;
+  }
+
+  /* Botão fullscreen */
+  .gym-icon-btn {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--gym-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  .gym-icon-btn:hover {
+    background: rgba(255, 59, 0, 0.2);
+    color: var(--gym-accent-glow);
+    transform: scale(1.05);
+  }
+  .gym-icon-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+
+  /* ============================================
+     RESPONSIVO
+     ============================================ */
+  @media (max-width: 600px) {
+    .gym-video {
+      padding: 10px;
+      border-radius: 20px;
+    }
+    .gym-video .frame-inner {
+      border-radius: 12px;
+    }
+    .gym-controls {
+      padding: 8px 10px;
+      gap: 8px;
+    }
+    .gym-time {
+      font-size: 12px;
+      min-width: 70px;
+    }
+    .gym-volume { display: none; }
+    .gym-bigplay {
+      width: 64px;
+      height: 64px;
+    }
+    .gym-bigplay svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     ESTRUTURA HTML — copie isso pro seu site
+     ============================================ -->
+<div class="gym-video">
+  <span class="screw-bl"></span>
+  <span class="screw-br"></span>
+  <span class="accent-bar accent-top"></span>
+  <span class="accent-bar accent-bottom"></span>
+
+  <div class="frame-inner">
+    <video id="gymVideo" poster="" preload="metadata">
+      <!-- TROQUE pelo seu vídeo -->
+      <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+      Seu navegador não suporta vídeo HTML5.
+    </video>
+
+    <!-- Botão central de play -->
+    <button class="gym-bigplay" id="bigPlay" aria-label="Reproduzir">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+
+    <!-- Barra de controles -->
+    <div class="gym-controls is-paused" id="controls">
+      <button class="gym-btn" id="playPause" aria-label="Play/Pause">
+        <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+      </button>
+
+      <span class="gym-time" id="timeDisplay">00:00 / 00:00</span>
+
+      <div class="gym-progress" id="progress">
+        <div class="gym-progress-fill" id="progressFill"></div>
+        <div class="gym-progress-thumb" id="progressThumb"></div>
+      </div>
+
+      <div class="gym-volume">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4z"/>
+        </svg>
+        <input type="range" id="volume" min="0" max="1" step="0.05" value="1" />
+      </div>
+
+      <button class="gym-icon-btn" id="fullscreen" aria-label="Tela cheia">
+        <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* JavaScript leve só pra fazer os controles funcionarem */
+  const video = document.getElementById('gymVideo');
+  const playPause = document.getElementById('playPause');
+  const bigPlay = document.getElementById('bigPlay');
+  const playIcon = document.getElementById('playIcon');
+  const pauseIcon = document.getElementById('pauseIcon');
+  const progress = document.getElementById('progress');
+  const progressFill = document.getElementById('progressFill');
+  const progressThumb = document.getElementById('progressThumb');
+  const timeDisplay = document.getElementById('timeDisplay');
+  const volume = document.getElementById('volume');
+  const fullscreen = document.getElementById('fullscreen');
+  const controls = document.getElementById('controls');
+
+  function fmt(s) {
+    if (isNaN(s)) return '00:00';
+    const m = Math.floor(s / 60).toString().padStart(2, '0');
+    const sec = Math.floor(s % 60).toString().padStart(2, '0');
+    return `${m}:${sec}`;
+  }
+
+  function togglePlay() {
+    if (video.paused) video.play();
+    else video.pause();
+  }
+
+  playPause.addEventListener('click', togglePlay);
+  bigPlay.addEventListener('click', togglePlay);
+  video.addEventListener('click', togglePlay);
+
+  video.addEventListener('play', () => {
+    playIcon.style.display = 'none';
+    pauseIcon.style.display = 'block';
+    bigPlay.classList.add('is-hidden');
+    controls.classList.remove('is-paused');
+  });
+  video.addEventListener('pause', () => {
+    playIcon.style.display = 'block';
+    pauseIcon.style.display = 'none';
+    bigPlay.classList.remove('is-hidden');
+    controls.classList.add('is-paused');
+  });
+
+  video.addEventListener('timeupdate', () => {
+    const pct = (video.currentTime / video.duration) * 100 || 0;
+    progressFill.style.width = pct + '%';
+    progressThumb.style.left = pct + '%';
+    timeDisplay.textContent = `${fmt(video.currentTime)} / ${fmt(video.duration)}`;
+  });
+
+  video.addEventListener('loadedmetadata', () => {
+    timeDisplay.textContent = `00:00 / ${fmt(video.duration)}`;
+  });
+
+  progress.addEventListener('click', (e) => {
+    const rect = progress.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    video.currentTime = pct * video.duration;
+  });
+
+  volume.addEventListener('input', (e) => {
+    video.volume = e.target.value;
+  });
+
+  fullscreen.addEventListener('click', () => {
+    const el = document.querySelector('.gym-video');
+    if (!document.fullscreenElement) el.requestFullscreen();
+    else document.exitFullscreen();
+  });
+</script>
+
+</body>
+</html>
