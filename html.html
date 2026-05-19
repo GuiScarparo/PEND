@@ -1,0 +1,37 @@
+<div class="login-container">
+    <div class="header">
+        <!-- Logo do SaaS -->
+        <img src="logo.png" alt="Logo do SaaS de Monitoramento">
+    </div>
+    <div class="login-form">
+        <h2>Bem-vindo de volta!</h2>
+        <p>Acesse sua conta para monitorar suas máquinas.</p>
+        
+        <form action="/login" method="POST">
+            <label for="email">E-mail Corporativo</label>
+            <input type="email" id="email" name="email" placeholder="seu@empresa.com.br" required>
+            
+            <label for="password">Senha</label>
+            <div class="password-field">
+                <input type="password" id="password" name="password" placeholder="********" required>
+                <span class="toggle-password">👁️</span> <!-- Ícone para mostrar/esconder senha -->
+            </div>
+            
+            <div class="options">
+                <input type="checkbox" id="remember-me" name="remember-me">
+                <label for="remember-me">Lembrar-me</label>
+                <a href="/forgot-password">Esqueceu sua senha?</a>
+            </div>
+            
+            <button type="submit">Entrar</button>
+            
+            <p class="error-message">E-mail ou senha incorretos. Tente novamente.</p> <!-- Exemplo de mensagem de erro -->
+        </form>
+        
+        <p class="signup-link">Ainda não tem conta? <a href="/cadastro">Cadastre-se aqui</a></p>
+    </div>
+    <div class="footer">
+        <!-- Informações de contato e links úteis -->
+        <p>&copy; 2026 Seu SaaS de Monitoramento. Todos os direitos reservados.</p>
+    </div>
+</div>
