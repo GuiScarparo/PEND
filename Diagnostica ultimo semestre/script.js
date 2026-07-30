@@ -54,7 +54,7 @@ let numero = document.querySelector("#numero");
 
   //verifica se o telefone tem o formato (xx)xxxxx-xxxx, onde x é um numero, e exibe uma mensagem de erro ou sucesso de acordo com a validação
 
-mensagem.textContent = "Formulário enviado com sucesso!";
+mensagem.textContent = "Formulário enviado com sucesso, entrarei em contato com você em breve!";
 mensagem.className= "Entrarei em contato com você em breve!";
 
 });
