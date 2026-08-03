@@ -1,0 +1,446 @@
+/* ==========================================================================
+   Portfólio — Guilherme Scarparo
+   Paleta: white smoke / charcoal / emerald green / dust grey
+   Fontes: STIX Two Text (display) + Atkinson Hyperlegible Next (corpo)
+   Conceito: o portfólio de um estudante de Desenvolvimento de Sistemas —
+   títulos com prefixo de "prompt" (>) e rótulos em estilo comentário de
+   código (// sobre), como se a página fosse lida num terminal.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&family=Atkinson+Hyperlegible+Next:ital,wght@0,400..700;1,400..700&display=swap');
+
+:root{
+  /* cores */
+  --white-smoke: #F5F5F5;
+  --charcoal: #2E2E2E;
+  --charcoal-soft: #3D3D3D;
+  --emerald: #10B981;
+  --emerald-dark: #0C8F67;
+  --dust-grey: #999999;
+  --dust-grey-soft: #CFCFCF;
+  --white: #FFFFFF;
+  --erro: #C0392B;
+
+  /* tipografia */
+  --font-display: "STIX Two Text", Georgia, serif;
+  --font-body: "Atkinson Hyperlegible Next", "Segoe UI", sans-serif;
+
+  /* escala/espaçamento */
+  --max-width: 960px;
+  --radius: 10px;
+  --transition: 0.2s ease;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  background-color: var(--white-smoke);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+img{
+  max-width: 100%;
+  display: block;
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
+ul{
+  list-style: none;
+}
+
+::selection{
+  background-color: var(--emerald);
+  color: var(--white);
+}
+
+:focus-visible{
+  outline: 2px solid var(--emerald);
+  outline-offset: 3px;
+}
+
+h1, h2, h3{
+  font-family: var(--font-display);
+  color: var(--charcoal);
+  font-weight: 700;
+}
+
+section p{
+  max-width: 70ch;
+}
+
+/* ==========================================================================
+   Cabeçalho
+   ========================================================================== */
+
+#cabecalho{
+  background-color: var(--charcoal);
+  align-items: center;
+  padding: 0 5vw;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header #nome h1{
+  color: var(--white-smoke);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  padding: 2vh 0;
+}
+
+header #nome h1 span{
+  color: var(--emerald);
+  font-style: italic;
+}
+
+#menu{
+  display: flex;
+  align-items: center;
+  padding: 2.5vh 0;
+  gap: 5vh;
+  font-size: 1.05rem;
+}
+
+#menu a{
+  position: relative;
+  color: var(--dust-grey-soft);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: color var(--transition);
+}
+
+#menu a::before{
+  content: ">";
+  color: var(--emerald);
+  margin-right: 0.35em;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+#menu a:hover,
+#menu a:focus-visible{
+  color: var(--white);
+}
+
+#menu a:hover::before,
+#menu a:focus-visible::before{
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Layout geral das seções
+   ========================================================================== */
+
+main{
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+main > section{
+  padding: 9vh 0;
+  border-bottom: 1px solid var(--dust-grey-soft);
+}
+
+main > section:last-child{
+  border-bottom: none;
+}
+
+section h2{
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 3vh;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+section h2::before{
+  content: "//";
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--emerald);
+  font-size: 0.65em;
+}
+
+/* ==========================================================================
+   Sobre
+   ========================================================================== */
+
+#sobre p{
+  font-size: 1.15rem;
+  color: var(--charcoal-soft);
+}
+
+#sobre p::first-letter{
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--emerald);
+  float: left;
+  line-height: 0.85;
+  margin-right: 0.1em;
+}
+
+/* ==========================================================================
+   Projetos
+   ========================================================================== */
+
+#projetos > p{
+  color: var(--charcoal-soft);
+  margin-bottom: 4vh;
+}
+
+#projetos > div{
+  background-color: var(--white);
+  border-radius: var(--radius);
+  border-top: 3px solid var(--emerald);
+  padding: 3vh 3vw;
+  margin-bottom: 3vh;
+  box-shadow: 0 1px 3px rgba(46, 46, 46, 0.08);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+#projetos > div:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(46, 46, 46, 0.1);
+}
+
+#projetos h2{
+  font-size: 1.3rem;
+  margin-bottom: 2vh;
+}
+
+#projetos h2::before{
+  content: none;
+}
+
+#projetos img{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 4px);
+  background-color: var(--dust-grey-soft);
+  margin-bottom: 1.5vh;
+}
+
+#projeto-tcc p{
+  color: var(--dust-grey);
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Curiosidades
+   ========================================================================== */
+
+#curiosidades article{
+  background-color: var(--white);
+  border-left: 4px solid var(--emerald);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 3vh 3vw;
+  margin-bottom: 3vh;
+}
+
+#curiosidades article:last-child{
+  margin-bottom: 0;
+}
+
+#curiosidades h3{
+  font-size: 1.2rem;
+  color: var(--emerald-dark);
+  margin-bottom: 1.5vh;
+}
+
+#curiosidades p{
+  color: var(--charcoal-soft);
+}
+
+/* ==========================================================================
+   Contato
+   ========================================================================== */
+
+#formulario{
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  max-width: 480px;
+  margin-top: 2vh;
+}
+
+#formulario label{
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--dust-grey);
+}
+
+#formulario input{
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 1.4vh 1rem;
+  border: 1.5px solid var(--dust-grey-soft);
+  border-radius: 6px;
+  background-color: var(--white);
+  color: var(--charcoal);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+#formulario input::placeholder{
+  color: var(--dust-grey);
+}
+
+#formulario input:focus{
+  border-color: var(--emerald);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+  outline: none;
+}
+
+#formulario button{
+  align-self: flex-start;
+  margin-top: 1vh;
+  padding: 1.4vh 3rem;
+  background-color: var(--emerald);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+#formulario button:hover,
+#formulario button:focus-visible{
+  background-color: var(--emerald-dark);
+  transform: translateY(-1px);
+}
+
+#mensagem{
+  margin-top: 2vh;
+  font-weight: 700;
+  color: var(--emerald-dark);
+}
+
+#mensagem p.Erro{
+  color: var(--erro);
+}
+
+/* ==========================================================================
+   Rodapé
+   ========================================================================== */
+
+footer{
+  background-color: var(--charcoal);
+  color: var(--dust-grey-soft);
+  padding: 6vh 5vw;
+  text-align: center;
+  position: relative;
+}
+
+footer > p{
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--white-smoke);
+  margin-bottom: 3vh;
+}
+
+footer nav ul{
+  display: flex;
+  justify-content: center;
+  gap: 4vh;
+  flex-wrap: wrap;
+}
+
+footer nav a{
+  font-weight: 700;
+  transition: color var(--transition);
+}
+
+footer nav a:hover,
+footer nav a:focus-visible{
+  color: var(--emerald);
+}
+
+.botão-flutuante{
+  position: fixed;
+  right: 4vw;
+  bottom: 4vh;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--emerald);
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.botão-flutuante::before{
+  content: "↑";
+  color: var(--white);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.botão-flutuante:hover,
+.botão-flutuante:focus-visible{
+  background-color: var(--emerald-dark);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Responsivo
+   ========================================================================== */
+
+@media (max-width: 700px){
+  #cabecalho{
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 6vw;
+  }
+
+  #menu{
+    gap: 3vh;
+    padding-bottom: 2.5vh;
+    flex-wrap: wrap;
+  }
+
+  main{
+    padding: 0 6vw;
+  }
+
+  main > section{
+    padding: 6vh 0;
+  }
+
+  #sobre p::first-letter{
+    font-size: 2.4rem;
+  }
+
+  .botão-flutuante{
+    right: 5vw;
+    bottom: 3vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}

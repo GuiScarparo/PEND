@@ -7,18 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div>
+    <header id="cabecalho">
+        <div id="nome">
         <h1>Guilherme<span>Scarparo</span></h1>
         </div>
 
-        <nav>
-            <ul>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#curiosidades">Curiosidades</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
+        <nav id="menu">
+                <a href="#sobre">Sobre</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#curiosidades">Curiosidades</a>
+                <a href="#contato">Contato</a>
         </nav>
     </header>
 
@@ -34,12 +32,12 @@
 
             <div id="projeto-escola">
                 <h2>Escola de linguas</h2>
-                <img id="img-escola" src="" alt="Imagem do projeto Escola de linguas">
+                <img id="img-escola" src="img/escola.png" alt="Imagem do projeto Escola de linguas">
             </div>
 
             <div id="projeto-tcc">
                 <h2>TCC</h2>
-                <img id="img-tcc" src="" alt="Imagem do projeto TCC">
+                <img id="img-tcc" src="img/tcc.png" alt="Imagem do projeto TCC">
                 <p>Visite o site da minha empresa do TCC</p>
 
             </div>
@@ -86,7 +84,7 @@
             </ul>
         </nav>
 
-        <button id="voltar" class="botão-flutuante"></button>
+        <button id="voltar" href="#cabecalho" class="botão-flutuante"></button>
 
     </footer>
 <script src="script.js"></script></body>
