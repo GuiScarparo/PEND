@@ -1,3 +1,4 @@
+//Exercício 1 - POO - Dupla: G. Scarparo e Rian
 //Objeto: Funcionario
 //Atributo:nome, idade, cargo, formação, cpf, carga horaria, salário
 //Método: Trabalhar, Entregar tarefa, Receber salario, aposentar 
@@ -29,6 +30,7 @@ class Funcionario{
 const funcionario1 = new Funcionario("Guilherme Scarparo", 24, "Desenvolvedor", "492.267.448-90", "Ensino Superior Completo", "8 horas diarias", 4500);
 const funcionario2 = new Funcionario("Rian", 23, "Desenvolvedor","449.931.648-07", "Ensino Superior Completo", "8 horas diarias", 4500);
 const funcionario3 = new Funcionario("Renato", 38, "Professor","287.182.765-08", "Pedagogia", "9 horas diarias", 2000);
+const funcionarioEspecial = new Funcionario("Peter Parker", 21,"Homem-aranha", "não registrado","sem dados", "24 horas", 0);
 
 console.log("|-----------------------------------|")
 console.log(funcionario1.Trabalhar());
@@ -49,4 +51,10 @@ console.log(funcionario3.Trabalhar());
 console.log(funcionario3.EntregarTarefa());
 console.log(funcionario3.ReceberSalario());
 console.log(funcionario3.Aposentar());
+console.log("|-----------------------------------|")
+
+console.log("|-----------------------------------|")
+console.log(funcionarioEspecial.Trabalhar());
+console.log(funcionarioEspecial.EntregarTarefa());
+console.log(funcionarioEspecial.ReceberSalario());
 console.log("|-----------------------------------|")
