@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Presença</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- O site funcionaria para registrar a presença de um aluno, usando seu RM(registro de matricula) para identificar no sistema, e pegando a localização para saber se realmente está em ambiente escolar, e uma foto para comprovar -->
+    <header id="cabecalho">
+        <div id="mensagem"></div><br>
+        <h1>Registro de Presença</h1>
+        <p class="subtitulo">Confirme sua presença em poucos passos</p>
+    </header>
+
+    <main id="secao">
+        <input type="number" id="idInput" placeholder="Digite seu RM">
+        <button id="registerButton">Registrar Presença</button>
+        <div id="location"></div>
+        <video id="camera" autoplay playsinline></video>
+    </main>
+
+    <footer id="rodape">
+        <p>Mantenha o RM em mãos e permita o acesso à localização e à câmera quando solicitado.</p>
+    </footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+:root{
+    --ink: #1c2b3a;
+    --ink-soft: #2b3d4f;
+    --paper: #f7f5f0;
+    --paper-dim: #efeae0;
+    --line: #c9c2b4;
+    --accent: #3d6b52;
+    --accent-dark: #2a4c3a;
+    --font-display: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+    --font-ui: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: var(--font-ui);
+    color: var(--ink);
+    /* textura de papel pautado, remetendo a um livro de chamada */
+    background-color: var(--paper);
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 2.4rem,
+        var(--paper-dim) 2.4rem,
+        var(--paper-dim) calc(2.4rem + 1px)
+    );
+}
+
+/* ---------- cabeçalho ---------- */
+
+#cabecalho{
+    background-color: var(--ink);
+    color: var(--paper);
+    padding: 2.5rem 1.5rem 2rem;
+    text-align: center;
+}
+
+#cabecalho h1{
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.9rem;
+    line-height: 1.2;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.9rem;
+}
+
+#cabecalho h1::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3rem;
+    height: 2px;
+    background: var(--accent);
+}
+
+#cabecalho .subtitulo{
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    color: #c7cdd3;
+}
+
+#mensagem{
+    display: none;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto 1.25rem;
+    padding: 0.7rem 1rem;
+    color: #173b2a;
+    background-color: #d9f0df;
+    border: 1px solid #91c6a0;
+    border-left: 4px solid #3d8b58;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: left;
+    animation: mensagem-aparecer 0.35s ease-out;
+}
+
+#mensagem::before{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.5rem;
+    color: #f7f5f0;
+    background-color: #3d8b58;
+    border-radius: 50%;
+    font-size: 0.65rem;
+    vertical-align: -0.1rem;
+}
+
+@keyframes mensagem-aparecer{
+    from{
+        opacity: 0;
+        transform: translateY(-0.4rem);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- conteúdo principal ---------- */
+
+#secao{
+    flex: 1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 3rem;
+    text-align: center;
+}
+
+#idInput{
+    width: 100%;
+    max-width: 260px;
+    padding: 0.75rem 0.25rem;
+    font-family: var(--font-ui);
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--ink);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--line);
+    transition: border-color 0.2s ease;
+}
+
+#idInput::placeholder{
+    color: #8a8478;
+}
+
+#idInput:focus{
+    outline: none;
+    border-bottom-color: var(--accent);
+}
+
+#idInput:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+#idInput::-webkit-outer-spin-button,
+#idInput::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+#idInput[type="number"]{
+    -moz-appearance: textfield;
+}
+
+#registerButton{
+    margin-top: 2rem;
+    padding: 0.85rem 2.25rem;
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--paper);
+    background-color: var(--accent);
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#registerButton:hover{
+    background-color: var(--accent-dark);
+}
+
+#registerButton:active{
+    transform: translateY(1px);
+}
+
+#registerButton:focus-visible{
+    outline: 2px solid var(--accent-dark);
+    outline-offset: 3px;
+}
+
+#location{
+    margin-top: 2.5rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--ink);
+}
+
+#location:empty{
+    display: none;
+}
+
+#location p{
+    margin: 0.15rem 0;
+}
+
+video#camera{
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 280px;
+    border-radius: 2px;
+    outline: 1px solid var(--line);
+    background-color: var(--ink);
+}
+
+/* ---------- rodapé ---------- */
+
+#rodape{
+    background-color: var(--ink-soft);
+    color: #c7cdd3;
+    text-align: center;
+    padding: 1.25rem 1.5rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce){
+    #registerButton{
+        transition: none;
+    }
+}
+
+@media (max-width: 400px){
+    #cabecalho h1{
+        font-size: 1.5rem;
+    }
+    #secao{
+        padding-top: 2.5rem;
+    }
+}
