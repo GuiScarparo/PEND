@@ -168,7 +168,7 @@ body{
     -moz-appearance: textfield;
 }
 
-#registerButton{
+.botaoDesing{
     margin-top: 2rem;
     padding: 0.85rem 2.25rem;
     font-family: var(--font-ui);
@@ -182,15 +182,15 @@ body{
     transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-#registerButton:hover{
+.botaoDesing:hover{
     background-color: var(--accent-dark);
 }
-
-#registerButton:active{
+    
+.botaoDesing:active{
     transform: translateY(1px);
 }
 
-#registerButton:focus-visible{
+.botaoDesing:focus-visible{
     outline: 2px solid var(--accent-dark);
     outline-offset: 3px;
 }
@@ -218,6 +218,12 @@ video#camera{
     outline: 1px solid var(--line);
     background-color: var(--ink);
 }
+#canvas{
+    display:none;
+}
+#foto{
+    display:none;
+}
 
 /* ---------- rodapé ---------- */
 
@@ -229,6 +235,8 @@ video#camera{
     font-size: 0.8rem;
     line-height: 1.5;
 }
+
+
 
 @media (prefers-reduced-motion: reduce){
     #registerButton{

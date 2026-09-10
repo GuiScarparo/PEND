@@ -1,6 +1,10 @@
 let RM = document.getElementById("idInput");
 let Botao = document.getElementById("registerButton");
 let mensagem = document.getElementById("mensagem");
+const canvas = document.querySelector('#canvas');
+const foto = document.querySelector('#foto');
+const video = document.querySelector('video');
+const captura = document.querySelector('#captura');
 
 Botao.addEventListener("click", function() {
     if (RM.value === "") {
@@ -24,6 +28,18 @@ Botao.addEventListener("click", function() {
     .catch(function(error) {
         console.error("Error accessing camera: " + error.name + " - " + error.message);
 });
+captura.addEventListener('click', function() {
+    canvas.width = video.clientWidth;
+    canvas.height = video.clientHeight;
+
+    const contexto = canvas.getContext('2d');
+    
+    contexto.drawImage(video, 0 ,0, canvas.width, canvas.height);
+
+    foto.src = canvas.toDataURL('image/png');
+    foto.style.display = "block";
+});
+
 mensagem.style.display = "block";
 mensagem.innerHTML = "<p>Aluno com o RM " + RM.value + " registrado com sucesso!</p>";
     },
