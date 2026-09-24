@@ -1,10 +1,10 @@
 :root {
-    --fundo: #eef1ee;          /* fundo da página (cinza-esverdeado bem claro) */
-    --superficie: #ffffff;     /* fundo da tabela */
+    --fundo: #eef1ee;          
+    --superficie: #ffffff;     
     --texto: #1f2a24;
     --texto-suave: #55625a;
     --borda: #d5dcd6;
-    --destaque: #1f7a4d;       /* verde do cabeçalho / botões */
+    --destaque: #1f7a4d;       
     --destaque-escuro: #175f3b;
 }
 
@@ -112,7 +112,7 @@ table {
     border: 1px solid var(--borda);
 }
 
-/* Tabela vazia (antes de pesquisar): esconde a caixa */
+
 table:has(tbody:empty) {
     display: none;
 }
@@ -129,7 +129,7 @@ tr:last-child td {
     border-bottom: none;
 }
 
-/* Coluna da esquerda: informação requerida */
+
 th {
     width: 50%;
     text-align: left;
@@ -139,7 +139,6 @@ th {
     border-bottom-color: var(--destaque-escuro);
 }
 
-/* Coluna da direita: dado vindo da API */
 td {
     text-align: left;
 }

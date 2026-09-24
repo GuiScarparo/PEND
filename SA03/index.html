@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shows</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<div class="circulo"></div>
+<div class="circulo2"></div>
+
+  <div class="container">
+    <h1>Busque Shows</h1>
+
+    <form class="busca" id="form">
+      <input type="text" id="keyword" placeholder="Buscar (ex: rock, Coldplay)" />
+      <select id="country">
+        <option value="US">Estados Unidos</option>
+        <option value="GB">Reino Unido</option>
+        <option value="CA">Canadá</option>
+        <option value="MX">México</option>
+        <option value="ES">Espanha</option>
+        <option value="DE">Alemanha</option>
+      </select>
+      <button type="submit">Buscar</button>
+    </form>
+
+    <div id="status"></div>
+    <div class="lista" id="lista"></div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
