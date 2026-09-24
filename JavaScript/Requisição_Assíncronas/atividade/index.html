@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Brasileirão - Tabela</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <h1 id="titulo">Brasileirão Série A</h1>
+
+        <p class="subtitulo">
+            Consulte a classificação de qualuqer time do campeonato brasileiro
+        </p>
+
+
+        <!-- Área de pesquisa -->
+
+        <div class="pesquisa">
+
+            <div class="campo-autocomplete">
+
+                <input
+                    type="text"
+                    id="inputPesquisa"
+                    placeholder="Pesquise por nome"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <button id="btnPesquisar">
+                Pesquisar
+            </button>
+
+
+            <button
+                id="btnLimpar"
+                class="btn-limpar"
+            >
+                Limpar
+            </button>
+
+        </div>
+
+
+        <!-- Status -->
+
+        <p id="status">
+            Carregando classificação...
+        </p>
+
+
+        <!-- Tabela -->
+
+        <div class="tabela-container">
+
+            <table>
+
+                <tbody id="tabelaBrasileirao">
+
+                    <!-- Dados inseridos pelo JavaScript -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
